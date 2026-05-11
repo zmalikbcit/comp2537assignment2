@@ -1,0 +1,18 @@
+<%- include('templates/header') %>
+
+<div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+        <h1 class="mb-4">Welcome</h1>
+        <% if (authenticated) { %>
+            <p class="lead">Hello, <strong><%= name %></strong>!</p>
+            <a href="/members" class="btn btn-primary me-2">Go to Members Area</a>
+            <a href="/logout" class="btn btn-outline-secondary">Logout</a>
+        <% } else { %>
+            <p class="lead">Please sign up or log in to continue.</p>
+            <a href="/signup" class="btn btn-primary me-2">Sign Up</a>
+            <a href="/login" class="btn btn-outline-primary">Log In</a>
+        <% } %>
+    </div>
+</div>
+
+<%- include('templates/footer') %>

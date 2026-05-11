@@ -1,0 +1,20 @@
+<%- include('templates/header') %>
+
+<h2 class="mb-4">Hello, <strong><%= name %></strong>.</h2>
+
+<!-- Bootstrap responsive grid: 3 columns on md+ screens, stacks to 1 on mobile -->
+<div class="row g-3 mb-4">
+    <div class="col-12 col-md-4">
+        <img src="/cat1.jpg" class="img-fluid rounded" alt="Cat 1">
+    </div>
+    <div class="col-12 col-md-4">
+        <img src="/cat2.jpg" class="img-fluid rounded" alt="Cat 2">
+    </div>
+    <div class="col-12 col-md-4">
+        <img src="/cat3.jpg" class="img-fluid rounded" alt="Cat 3">
+    </div>
+</div>
+
+<a href="/logout" class="btn btn-outline-secondary">Sign Out</a>
+
+<%- include('templates/footer') %>

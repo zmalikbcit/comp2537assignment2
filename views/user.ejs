@@ -1,0 +1,19 @@
+<tr>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td>
+        <span class="badge <%= user.user_type === 'admin' ? 'bg-danger' : 'bg-secondary' %>">
+            <%= user.user_type %>
+        </span>
+    </td>
+    <td>
+        <form action="/promoteUser" method="post" class="d-inline">
+            <input type="hidden" name="email" value="<%= user.email %>">
+            <button type="submit" class="btn btn-success btn-sm">Promote to Admin</button>
+        </form>
+        <form action="/demoteUser" method="post" class="d-inline">
+            <input type="hidden" name="email" value="<%= user.email %>">
+            <button type="submit" class="btn btn-warning btn-sm">Demote to User</button>
+        </form>
+    </td>
+</tr>

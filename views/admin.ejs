@@ -1,0 +1,21 @@
+<%- include('templates/header') %>
+
+<h2 class="mb-4">Users</h2>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Type</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%  for (let i = 0; i < users.length; i++) { %>
+            <%- include('templates/user', { user: users[i] }) %>
+        <% } %>
+    </tbody>
+</table>
+
+<%- include('templates/footer') %>
