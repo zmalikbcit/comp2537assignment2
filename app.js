@@ -1,10 +1,10 @@
 require('dotenv').config();
 
-const express = require('express');
-const session = require('express-session');
+const express    = require('express');
+const session    = require('express-session');
 const MongoStore = require('connect-mongo');
-const bcrypt  = require('bcrypt');
-const Joi = require('joi');
+const bcrypt     = require('bcrypt');
+const Joi        = require('joi');
 
 const { database } = require('./databaseConnection');
 
@@ -15,14 +15,15 @@ const saltRounds = 12;
 // Session expiry: 1 hour
 const expireTime = 1 * 60 * 60 * 1000;
 
-// secret information section
-const mongodb_host = process.env.MONGODB_HOST;
-const mongodb_user = process.env.MONGODB_USER;
-const mongodb_password = process.env.MONGODB_PASSWORD;
-const mongodb_user_database = process.env.MONGODB_USER_DATABASE;
+/* secret information section */
+const mongodb_host             = process.env.MONGODB_HOST;
+const mongodb_user             = process.env.MONGODB_USER;
+const mongodb_password         = process.env.MONGODB_PASSWORD;
+const mongodb_user_database    = process.env.MONGODB_USER_DATABASE;
 const mongodb_session_database = process.env.MONGODB_SESSION_DATABASE;
-const mongodb_session_secret = process.env.MONGODB_SESSION_SECRET;
-const node_session_secret = process.env.NODE_SESSION_SECRET;
+const mongodb_session_secret   = process.env.MONGODB_SESSION_SECRET;
+const node_session_secret      = process.env.NODE_SESSION_SECRET;
+/* END secret section */
 
 const userCollection = database.db(mongodb_user_database).collection('users');
 
@@ -192,15 +193,7 @@ app.get('/members', (req, res) => {
         res.redirect('/');
         return;
     }
-
-    // Pick a random image from the 3 available each time the page loads
-    const images = ['cat1.jpg', 'cat2.jpg', 'cat3.jpg'];
-    const randomImage = images[Math.floor(Math.random() * images.length)];
-
-    res.render('members', {
-        name: req.session.name,
-        image: randomImage
-    });
+    res.render('members', { name: req.session.name });
 });
 
 app.get('/logout', (req, res) => {
